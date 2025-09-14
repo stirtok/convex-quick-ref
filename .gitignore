@@ -1,0 +1,9 @@
+.DS_Store
+.calva/
+.cpcache/
+.lsp/
+.vscode/
+.nrepl-port
+.RData
+.Rhistory
+scratch/
