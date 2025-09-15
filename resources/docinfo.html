@@ -1,0 +1,98 @@
+<script>
+    // Note: the extra spaces around the JSDoc types are necessary otherwise
+    // Asciidoctor thinks it is supposed to substitute attributes.
+    // See https://github.com/asciidoctor/asciidoctor/issues/4663
+    document.addEventListener("DOMContentLoaded", function () {
+        /**
+         * @typedef TocEntry
+         * @property { string } title The title of the section.
+         * @property { string } href The link to the section.
+         * @property { TocEntry[] } children Subsections (empty array if none).
+         */
+
+        /**
+         * Extract the Table of Contents from the HTML that Asciidoctor
+         * generates.
+         *
+         * @param { Element } ul A <ul> element in the ToC.
+         * @returns { TocEntry[] } List of ToC entries.
+         */
+        function extractToc(ul) {
+            return Array.from(ul.children).map(li => {
+                const link = li.querySelector("a");
+                const sublist = li.querySelector("ul");
+                return {
+                    title: link?.textContent || "",
+                    href: link?.getAttribute("href") || "",
+                    children: sublist !== null ? extractToc(sublist) : []
+                };
+            });
+        }
+
+        /**
+         * Creates an HTML element for a ToC item that uses <details>
+         * so the ToC is foldable.
+         *
+         * @param { TocEntry } entry - The ToC item data.
+         * @returns { HTMLElement } The created element.
+         */
+        function createToC(entry) {
+            if (entry.children.length === 0) {
+                const link = document.createElement("a");
+                link.classList.add("toc-link", "toc-link-leaf");
+                link.textContent = entry.title;
+                link.href = entry.href;
+                return link;
+            }
+
+            const details = document.createElement("details");
+            details.classList.add("toc-section");
+
+            const summary = document.createElement("summary");
+            summary.classList.add("toc-summary");
+
+            const link = document.createElement("a");
+            link.classList.add("toc-link");
+            link.textContent = entry.title;
+            link.href = entry.href;
+
+            summary.appendChild(link);
+            details.appendChild(summary);
+
+            for (const child of entry.children) {
+                details.appendChild(createToC(child));
+            }
+
+            return details;
+        }
+
+        const toc = document.getElementById("toc");
+        const tocUl = document.querySelector("#toc ul");
+        if (toc === null || tocUl === null) {
+            throw Error("#toc/#toc ul element not found");
+        }
+
+        // Extract ToC structure.
+        const tocData = extractToc(tocUl);
+
+        // Create new ToC.
+        const newToc = document.createElement("div");
+        newToc.id = "toc";
+        newToc.className = "toc2";
+        for (const entry of tocData) {
+            newToc.appendChild(createToC(entry));
+        }
+
+        // Replace old ToC with foldable ToC.
+        toc.replaceWith(newToc);
+    });
+</script>
+<style>
+#toc details, #toc summary {
+    margin-bottom: 0;
+}
+.toc-link-leaf {
+    display: list-item;
+    margin: 10px 10px 10px 20px;
+}
+</style>

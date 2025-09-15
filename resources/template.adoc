@@ -1,0 +1,23 @@
+:favicon: https://docs.convex.world/img/Convex.png
+:source-highlighter: highlight.js
+:highlightjs-theme: default
+:highlightjs-languages: clojure, clojurescript, edn, javascript, shell, json
+//:sectnums:
+:xrefstyle: short
+:icons: font
+:toc: macro
+:toclevels: 2
+:doctype: article
+:docinfo: shared
+:title-logo-image: https://docs.convex.world/img/Convex.png
+:description: Quick-lookup reference documentation for Convex's standard libraries.
+:keywords: Convex, Lisp, reference, documentation, standard, libaries
+:title-separator: ::
+:doctitle: Convex Quick Ref
+ifdef::backend-pdf[:notitle:]
+ifdef::backend-pdf[[discrete]]
+= {doctitle}
+Quick-lookup reference documentation for Convex's standard libraries
+:toc: right
+:toc-title: Contents
+
