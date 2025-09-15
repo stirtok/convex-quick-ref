@@ -1,7 +1,8 @@
-:favicon: https://docs.convex.world/img/Convex.png
+:favicon: convex-logo.png
 :source-highlighter: highlight.js
+:source-language: clojure
 :highlightjs-theme: default
-:highlightjs-languages: clojure, clojurescript, edn, javascript, shell, json
+:highlightjs-languages: clojure
 //:sectnums:
 :xrefstyle: short
 :icons: font
@@ -9,9 +10,9 @@
 :toclevels: 2
 :doctype: article
 :docinfo: shared
-:title-logo-image: https://docs.convex.world/img/Convex.png
+:title-logo-image: convex-logo.png
 :description: Quick-lookup reference documentation for Convex's standard libraries.
-:keywords: Convex, Lisp, reference, documentation, standard, libaries
+:keywords: Convex, Lisp, reference, documentation, standard, libraries, StirTok, Ash McClenaghan
 :title-separator: ::
 :doctitle: Convex Quick Ref
 ifdef::backend-pdf[:notitle:]
@@ -20,4 +21,18 @@ ifdef::backend-pdf[[discrete]]
 Quick-lookup reference documentation for Convex's standard libraries
 :toc: right
 :toc-title: Contents
+:reproducible:
+
+== Preamble
+
+[frame=none,grid=none,cols="1,4"]   
+|===
+^a|image::convex-logo.png["Convex logo",width="60px"]
+a| Use `⌘`\+`f` on a Mac / `&#x229E;`+`f` on Windows to search for some text 
+in https://convex.world[Convex]'s standard 
+libraries.{empty}footnote:[Generated from Convex's 20th August 2025 commit https://github.com/Convex-Dev/convex/tree/3e53bb8cdab07da45797118e397282b927104f09[`3e53bb8`].]
+Or, explore through the expandable _namespace_ list.
+|===
+
+
 

@@ -9,20 +9,21 @@
 
 (def ns-list
   ["convex.core"
-   "convex.metadata"
    "convex.registry"
    "convex.trust"
-   "convex.asset"
    "convex.fungible"
-   "asset.nft.basic"
+   "convex.asset"
+   "torus.exchange"
    "asset.nft.simple"
-   "asset.box"
+   "asset.nft.basic"
    "asset.box.actor"
+   "asset.box"
    "asset.multi-token"
    "asset.wrap.convex"
+   "convex.trust.ownership-monitor"
    "convex.trust.delegate"
-   ;; TODO: More trust.*
-   "torus.exchange"])
+   "convex.trust.whitelist"
+   "convex.trust.monitors"])
 
 (def ns-map ; stringified Convex Lisp
   (as-> ns-list x
@@ -77,13 +78,16 @@
   (io/make-parents adoc-path)
   (io/copy (io/file templ-path) (io/file adoc-path))
   (with-open [w (io/writer (io/file adoc-path) :append true)]
-    (let [doc-tree (get (json/read-str (slurp doc-tree-json-path)) "value")]
+    (let [doc-tree (as-> (slurp doc-tree-json-path) x
+                     (json/read-str x)
+                     (get x "value")
+                     (sort-by #(.indexOf ns-list (first %)) x))]
       ;; Per namespace
-      (doseq [[ns ns-detail] (sort doc-tree)]
+      (doseq [[ns ns-detail] doc-tree]
         (.write w (str "== " ns "\n\n"))
         ;; Per symbol
         (doseq [[sym sym-detail] (sort ns-detail)]
-          (.write w (str "'''\n\n=== `" (esc sym) "`\n\n"))
+          (.write w (str "'''\n\n=== *`" (esc sym) "`*\n\n"))
           (let [doc (get sym-detail "doc")]
             ;; Description
             (let [description (get doc "description")
@@ -116,11 +120,8 @@
                 (.write w (str "===== Examples\n\n"))
                 ;; Per example
                 (doseq [example examples]
-                  (.write w (str "[source,clojure]\n----\n" (get example "code") "\n----\n\n"))))))))))
+                  (.write w (str "[source]\n----\n" (get example "code") "\n----\n\n"))))))))))
   (System/exit 0))
-
-
-
 
 
 
