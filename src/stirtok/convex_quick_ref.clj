@@ -62,7 +62,6 @@
 
 ;; -- write-adoc ----------------------------------------------
 
-
 (def doc-tree-json-path "scratch/doc-tree.json")
 (def templ-path "resources/template.adoc")
 (def adoc-path "scratch/index.adoc")
@@ -91,7 +90,7 @@
           (let [doc (get sym-detail "doc")]
             ;; Description
             (let [description (get doc "description")
-                  description (if (string? description) 
+                  description (if (string? description)
                                 description
                                 (str/join " +\n" description))]
               (.write w (str (esc description) "\n\n")))
@@ -103,7 +102,7 @@
                 (doseq [sig-variation signature]
                   (let [params (get sig-variation "params")
                         return (get sig-variation "return")]
-                    (when (some? params) 
+                    (when (some? params)
                       (.write w (str "Params: `[" (str/join " " params) "]`")))
                     (when (some? return)
                       (.write w (str " Return: `" (str/join " " params) "`")))
@@ -122,9 +121,6 @@
                 (doseq [example examples]
                   (.write w (str "[source]\n----\n" (get example "code") "\n----\n\n"))))))))))
   (System/exit 0))
-
-
-
 
 
 
