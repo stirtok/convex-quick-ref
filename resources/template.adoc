@@ -1,4 +1,4 @@
-:favicon: convex-logo.png
+:favicon: stirtok-logo.png
 :source-highlighter: highlight.js
 :source-language: clojure
 :highlightjs-theme: default
