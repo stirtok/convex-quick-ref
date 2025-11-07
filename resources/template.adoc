@@ -28,7 +28,7 @@ Quick-lookup reference documentation for Convex's standard libraries
 [frame=none,grid=none,cols="1,4"]   
 |===
 ^a|image::convex-logo.png["Convex logo",width="60px"]
-a| Use `⌘`\+`f` on a Mac / `&#x229E;`+`f` on Windows to search for some text 
+a| Use `Command + F` on a Mac / `Ctrl + F` on Windows to search for some text 
 in https://convex.world[Convex]'s standard 
 libraries.{empty}footnote:[Generated from Convex's 20th August 2025 commit https://github.com/Convex-Dev/convex/tree/3e53bb8cdab07da45797118e397282b927104f09[`3e53bb8`].]
 Or, explore through the expandable _namespace_ list.
