@@ -23,7 +23,8 @@
    "convex.trust.ownership-monitor"
    "convex.trust.delegate"
    "convex.trust.whitelist"
-   "convex.trust.monitors"])
+   "convex.trust.monitors"
+   "convex.trust.governance"])
 
 (def ns-map ; stringified Convex Lisp
   (as-> ns-list x

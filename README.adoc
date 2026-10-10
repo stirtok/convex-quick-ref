@@ -1,3 +1,7 @@
 = convex-quick-ref
 
 Quick-lookup reference documentation for Convex's standard libraries.
+
+== WIP
+
+Moved from running against v0.8.2-SNAPSHOT to running against v0.8.16 but now getting an `Out of juice!`. Is it because queries are costing when I think that they shouldn't be? Or is it due to a more upstream error such as hitting a REST API limit when trying to marshall the large-ish data structure that is returned as the result of `query.cvx`?`
