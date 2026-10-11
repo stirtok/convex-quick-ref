@@ -30,7 +30,7 @@ Quick-lookup reference documentation for Convex's standard libraries
 ^a|image::convex-logo.png["Convex logo",width="60px"]
 a| Use `Command + F` on a Mac / `Ctrl + F` on Windows to search for some text 
 in https://convex.world[Convex]'s standard 
-libraries.{empty}footnote:[Generated from the Convex 2nd September 2026 (`v0.8.16`) commit https://github.com/Convex-Dev/convex/tree/ff86d5c100942ba2008001f77ce9188838e9d0a7[`ff86d5c`].]
+libraries.{empty}footnote:[Generated from Convex's 2nd September 2026 (`v0.8.16`) commit https://github.com/Convex-Dev/convex/tree/ff86d5c100942ba2008001f77ce9188838e9d0a7[`ff86d5c`].]
 Or, explore through the expandable _namespace_ list.
 |===
 

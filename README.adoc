@@ -2,6 +2,14 @@
 
 Quick-lookup reference documentation for Convex's standard libraries.
 
-== WIP
 
-Moved from running against v0.8.2-SNAPSHOT to running against v0.8.16 but now getting an `Out of juice!`. Is it because queries are costing when I think that they shouldn't be? Or is it due to a more upstream error such as hitting a REST API limit when trying to marshall the large-ish data structure that is returned as the result of `query.cvx`?`
+// Note:
+//
+//   Convex v0.8.16 needs to be tweaked to allow this code to run against it...
+//
+//   Take a local copy of v08.16
+//   edit the Java source code for convex.restapi.PublicQueryService
+//   to set MAX_QUERY_JUICE=100_000_000L
+//   build and install this slightly tweaked version, using Maven
+//   run Convex as a peer service
+//   finally, run this code against that running Convex service.
